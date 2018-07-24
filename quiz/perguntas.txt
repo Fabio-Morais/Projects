@@ -1,0 +1,102 @@
+------------nivel 1-----------
+Qual é o cos(90º)?
+xa)0
+b)1
+c)2,4
+d)3,1
+Quanto é 2/8 de 10/3?
+a)20/16
+b)2/3
+xc)5/6
+d)4,5
+1  3  6  10  (?)   Qual é o numero que está entre (?)
+xa)15
+b)16
+c)17
+d)21
+Um pedreiro diz: "Se eu tivesse dois tijolos a mais, o dobro deste número seria 100". Quantos tijolos ele tem?
+a)42
+b)52
+xc)48
+d)50
+Pedro tem 6 bolas de gude a mais do que Jorge. Os dois juntos têm 54. Quanto tem cada um?
+xa)30 e 24
+b)28 e 26
+c)24 e 26
+d)34 e 20
+Num elevador que suporta 600 quilos, quantas caixas de 48 quilos, pode-se levar por vez?
+xa)12
+b)11
+c)10
+d)13
+Oito amigos se encontram e cada um cumprimenta o outro com um aperto de mão. Quantos apertos de mão se trocaram?
+a)22
+b)64
+xc)28
+d)24
+O termometro subiu 6 graus, e isso representa a metade da temperatura de antes. A quantos graus está agora?
+a)22 graus
+xb)18 graus
+c)24 graus
+d)12 graus
+Se seis pessoas comem 6 chocolates em 6 minutos, quantas pessoas comerão 80 chocolates em 48 minutos?
+a)14
+b)20
+xc)10
+d)12
+Oito pessoas querem se dispor em 8 bancos, quantas maneiras é possivel?
+xa)40320
+b)64
+c)16777216
+d)36
+----------nivel 2--------
+Ao observar a sequência de números abaixo, descubra qual das opções completa a série. 66, 59, 52, 45, 38, (?)
+a)32
+xb)31
+c)35
+d)43
+Qual dos números a seguir NÃO são um número primo?
+a)2
+b)5
+xc)9
+d)3
+Um automovel comporta dois passageiros no banco da frente e tres no banco de trás. Calcule o numero de alternativas distintas para lotar o automovel utilizando 7 pessoas, de modo que uma dessas pessoas nunca ocupe um lugar nos bancos da frente.
+a)180
+xb)1800
+c)240
+d)2400
+Se eu leio 5 paginas por dia de um livro, eu termino de ler 16 dias antes do que se eu estivesse lendo 3 paginas por dia. Quantas paginas tem o livro?
+a)60
+b)140
+c)170
+xd)120
+Qual o resto de divisao de 10 por 3?
+a)0
+xb)1
+c)3
+d)33
+1/4 é a mesma coisa que:
+a)14
+b)1,4
+xc)7/28
+d)15/36
+Se o amanha de ontem era quinta-feira, que dia é o dia depois do amanha de ontem?
+a)sabado
+b)domingo
+xc)sexta
+d)quarta
+Em um carro ha 1 avô, 2 pais, 2 filhos, 1 neto quantas pessoas tem dentro do carro
+xa)3
+b)10
+c)6
+d)4
+Qual o sen(30º)?
+a)raiz(2)
+b)raiz(2)/2
+xc)1/2
+d)1
+Qual o ponto que intersecta as 2 restas? f(x)=x+2; g(x)=x/2+5
+xa)6
+b)1,5
+c)7
+d)0

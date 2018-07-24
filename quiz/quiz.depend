@@ -1,0 +1,103 @@
+# depslib dependency file v1.0
+1530818883 source:c:\users\fabio\onedrive\ambiente de trabalho\quiz\funcoes.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<conio.h>
+	"tabdispersao.h"
+	"vetor.h"
+	<time.h>
+	<locale.h>
+	<ctype.h>
+	"heap.h"
+
+1530818973 source:c:\users\fabio\onedrive\ambiente de trabalho\quiz\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"funcoes.h"
+	"vetor.h"
+	"heap.h"
+	"tabdispersao.h"
+	<locale.h>
+
+1530744976 c:\users\fabio\onedrive\ambiente de trabalho\quiz\funcoes.h
+	"tabdispersao.h"
+	"vetor.h"
+	"heap.h"
+
+1530622512 c:\users\fabio\onedrive\ambiente de trabalho\quiz\vetor.h
+
+1530801918 c:\users\fabio\onedrive\ambiente de trabalho\quiz\tabdispersao.h
+
+1530801888 source:c:\users\fabio\onedrive\ambiente de trabalho\quiz\tabdispersao.c
+	<stdlib.h>
+	<string.h>
+	<stdio.h>
+	"tabdispersao.h"
+
+1530741607 source:c:\users\fabio\onedrive\ambiente de trabalho\quiz\vetor.c
+	"vetor.h"
+	<string.h>
+	<stdlib.h>
+	<stdio.h>
+
+1530754597 c:\users\fabio\onedrive\ambiente de trabalho\quiz\heap.h
+
+1530797093 source:c:\users\fabio\onedrive\ambiente de trabalho\quiz\heap.c
+	"heap.h"
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1530797093 source:c:\users\fabio\onedrive\ambiente de trabalho\prog2\projetos_pessoais\quiz\heap.c
+	"heap.h"
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1530754597 c:\users\fabio\onedrive\ambiente de trabalho\prog2\projetos_pessoais\quiz\heap.h
+
+1532455440 source:c:\users\fabio\onedrive\ambiente de trabalho\prog2\projetos_pessoais\quiz\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"funcoes.h"
+	"vetor.h"
+	"heap.h"
+	"tabdispersao.h"
+	<locale.h>
+
+1530744976 c:\users\fabio\onedrive\ambiente de trabalho\prog2\projetos_pessoais\quiz\funcoes.h
+	"tabdispersao.h"
+	"vetor.h"
+	"heap.h"
+
+1530801918 c:\users\fabio\onedrive\ambiente de trabalho\prog2\projetos_pessoais\quiz\tabdispersao.h
+
+1530622512 c:\users\fabio\onedrive\ambiente de trabalho\prog2\projetos_pessoais\quiz\vetor.h
+
+1530801888 source:c:\users\fabio\onedrive\ambiente de trabalho\prog2\projetos_pessoais\quiz\tabdispersao.c
+	<stdlib.h>
+	<string.h>
+	<stdio.h>
+	"tabdispersao.h"
+
+1530741607 source:c:\users\fabio\onedrive\ambiente de trabalho\prog2\projetos_pessoais\quiz\vetor.c
+	"vetor.h"
+	<string.h>
+	<stdlib.h>
+	<stdio.h>
+
+1532455110 source:c:\users\fabio\onedrive\ambiente de trabalho\prog2\projetos_pessoais\quiz\funcoes.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<conio.h>
+	"tabdispersao.h"
+	"vetor.h"
+	<time.h>
+	<locale.h>
+	<ctype.h>
+	"heap.h"
+
