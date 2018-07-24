@@ -63,7 +63,7 @@ int main()
 
         imprime_tela(tela);
         imprime_vencedor(jogador_venc, jogador_1, jogador_2);
-        printf("\nDeseja jogar mais uma vez?(y/n) ");
+        printf("\nDo you want play again?(y/n) ");
         scanf(" %c", &tecla);
         if(tecla=='y')
             continue;
@@ -79,23 +79,23 @@ int main()
 void imprime_vencedor(int jogador_venc, char jogador_1[nome], char jogador_2[nome]){
 
     if(jogador_venc==1)
-        printf("\n%s ganhou\n\n\n", jogador_1);
+        printf("\n%s wins\n\n\n", jogador_1);
     else
     {
         if(jogador_venc==2)
-            printf("\n%s ganhou\n\n\n", jogador_2);
+            printf("\n%s wins\n\n\n", jogador_2);
         else
-            printf("\nNENHUM JOGADOR GANHOU\n\n\n");
+            printf("\nNO PLAYER WON\n\n\n");
     }
 }
 
 
 void inicializa_jogadores(char jogador_1[nome], char jogador_2[nome])
 {
-    printf("\t\t**BEM VINDOS**\n\n");
-    printf("\nEscreva o nome do jogador 1: ");
+    printf("\t\t**WELCOME**\n\n");
+    printf("\nWrite your name player 1: ");
     scanf("%s", jogador_1);
-    printf("\nEscreva o nome do jogador 2: ");
+    printf("\nWrite your name player 2: ");
     scanf("%s", jogador_2);
 
 }
@@ -161,16 +161,16 @@ char imprime_get(char tela[3][3], int count,char jogador_1[nome], char jogador_2
        {
 
         if(count==1)
-        printf("\nEscolha a sua jogada %s (X): ", jogador_1);
+        printf("\nMake a move %s (X): ", jogador_1);
         else if(count==2)
-        printf("\nEscolha a sua jogada %s (O): ", jogador_2);
+        printf("\nMake a move %s (O): ", jogador_2);
         fflush(stdin);
         scanf(" %c", &tecla);
         tecla=toupper(tecla);
         if((tecla<='9' && tecla>='1') || tecla== 'Q' || tecla== 'W' || tecla== 'E' || tecla== 'A' || tecla== 'S' || tecla== 'D' || tecla== 'Z' || tecla== 'X' || tecla== 'C')
             break;
         else
-            printf("\n\7*Tecla errada, por favor verifique as opções*\n");
+            printf("\n\7*Wrong key, please check the options*\n");
        }
 
         if(tecla=='Q' || tecla=='7')
@@ -232,7 +232,7 @@ char imprime_get(char tela[3][3], int count,char jogador_1[nome], char jogador_2
         {
              imprime_tela(tela);
              imprime_opcoes();
-            printf("\n\7*Já está preenchida essa jogada*");
+            printf("\n\7*WRONG MOVE*");
 
         }
     }
@@ -361,7 +361,7 @@ void finaliza()
 {
     system("mode con:cols=100 lines=20");
     system("cls");
-    printf("\n\t***Realizado por Fábio Morais***\n\n\n");
+    printf("\n\t***Created by Fábio Morais***\n\nTHANKS FOR PLAYING\n");
     system("pause");
 }
 
