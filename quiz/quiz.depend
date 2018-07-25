@@ -101,3 +101,42 @@
 	<ctype.h>
 	"heap.h"
 
+1530797093 source:c:\users\fabio\onedrive\documentos\github\projects\quiz\heap.c
+	"heap.h"
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1530754597 c:\users\fabio\onedrive\documentos\github\projects\quiz\heap.h
+
+1532455440 source:c:\users\fabio\onedrive\documentos\github\projects\quiz\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"funcoes.h"
+	"vetor.h"
+	"heap.h"
+	"tabdispersao.h"
+	<locale.h>
+
+1530744976 c:\users\fabio\onedrive\documentos\github\projects\quiz\funcoes.h
+	"tabdispersao.h"
+	"vetor.h"
+	"heap.h"
+
+1530801918 c:\users\fabio\onedrive\documentos\github\projects\quiz\tabdispersao.h
+
+1530622512 c:\users\fabio\onedrive\documentos\github\projects\quiz\vetor.h
+
+1530801888 source:c:\users\fabio\onedrive\documentos\github\projects\quiz\tabdispersao.c
+	<stdlib.h>
+	<string.h>
+	<stdio.h>
+	"tabdispersao.h"
+
+1530741607 source:c:\users\fabio\onedrive\documentos\github\projects\quiz\vetor.c
+	"vetor.h"
+	<string.h>
+	<stdlib.h>
+	<stdio.h>
+

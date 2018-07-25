@@ -267,7 +267,7 @@ void ler_para_tabela(){
 
 char imprime_top_score(heap *top_score1, heap *top_score2)
 {
-    system("mode con:cols=100 lines=30");
+    system("mode con:cols=100 lines=35");
     char tecla;
     int i, tamanho1=top_score1->tamanho,tamanho2=top_score2->tamanho;
     elemento *top;
@@ -468,7 +468,7 @@ void menu_escolha_nivel(vetor* perguntas, int n)
         break;
 
     default:
-        menu_escolha_nivel(perguntas);
+        menu_escolha_nivel(perguntas,  n);
         break;
     }
 }
