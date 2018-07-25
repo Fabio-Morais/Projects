@@ -9,6 +9,8 @@
 #include <ctype.h>
 #include "heap.h"
 #define NOME 250
+
+
 tabela_dispersao *jogadores;
 
 char nome_jogador_presente[50];
