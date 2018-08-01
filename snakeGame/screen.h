@@ -1,7 +1,7 @@
 #ifndef SCREEN_H
 #define SCREEN_H
-#define MaxL 75
-#define MaxC 30
+#define MaxL 65
+#define MaxC 25
 
 
 class screen
@@ -11,8 +11,7 @@ class screen
         virtual ~screen();
         void BootScreen(char ScreenPrint[MaxC][MaxL]);
         void PrintScreen1(char ScreenPrint[MaxC][MaxL]);
-        void snake(char ScreenPrint[MaxC][MaxL]);
-        void SnakeMove(char ScreenPrint[MaxC][MaxL], int x, int y);
+
     protected:
 
     private:

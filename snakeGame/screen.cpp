@@ -4,9 +4,6 @@
 #include<stdlib.h>
 #include <iomanip>
 
-#define MaxL 75
-#define MaxC 30
-
 using namespace std;
 
 screen::screen()
@@ -27,13 +24,18 @@ void screen::BootScreen(char ScreenPrint[MaxC][MaxL])
     system("mode con:cols=80 lines=35");
     system("color 0B");
 
+    ScreenPrint[MaxC/2][MaxL/2]= 254;
 
     for(i=0; i<MaxL; i++)
     {
-        ScreenPrint[0][i]=178;
-        ScreenPrint[MaxC-1][i]=178;
+        ScreenPrint[0][i]=254;
+        ScreenPrint[MaxC-1][i]=254;
         if(i<MaxC)
         {
+            if(i==0)
+                continue;
+            if(i==MaxC-1)
+                continue;
             ScreenPrint[i][0]=178;
             ScreenPrint[i][MaxL-1]=178;
 
@@ -61,10 +63,3 @@ void screen::PrintScreen1(char ScreenPrint[MaxC][MaxL])
 
 }
 
-
-void screen::snake(char ScreenPrint[MaxC][MaxL]){
-ScreenPrint[MaxC/2][MaxL/2]= 254;
-}
-
-
-void SnakeMove(char ScreenPrint[MaxC][MaxL], int x, int y);
