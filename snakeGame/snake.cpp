@@ -13,10 +13,10 @@ snake::~snake()
 
 void snake::setX(int x){
     if(x==1)
-        CoordX++;
+        CoordX+=2;
     else
         if(x==-1)
-            CoordX--;
+            CoordX-=2;
         else
             CoordX=x;
 }
@@ -30,9 +30,9 @@ void snake::setY(int y){
         else
             CoordY=y;
 }
-int snake::returnX(){
+int snake::GetX(){
 return CoordX;
 }
-int snake::returnY(){
+int snake::GetY(){
 return CoordY;
 }

@@ -1,6 +1,6 @@
 #ifndef SNAKE_H
 #define SNAKE_H
-#define MaxL 65
+#define MaxL 60
 #define MaxC 25
 
 class snake
@@ -10,8 +10,8 @@ class snake
         virtual ~snake();
         void setX(int x);
         void setY(int y);
-        int returnX();
-        int returnY();
+        int GetX();
+        int GetY();
     protected:
 
     private:

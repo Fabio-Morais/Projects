@@ -5,72 +5,39 @@
 #include<stdlib.h>
 #include<conio.h>
 #include <ctype.h>
-
+#include <windows.h>
+#define TIME 1000 * 0.2
 using namespace std;
 
 int main()
 {
     char c,ScreenPrint[MaxC][MaxL]= {' '};
-    int milli_seconds = 1000 * 0.2;
+    int milli_seconds = TIME;
 
     screen scre;
     snake snak;
-    scre.BootScreen(ScreenPrint);
-
-
+    //inicializa a tela com o valor ascii que pretender
+    scre.BootScreen(ScreenPrint, 177);
 
     for(;;)
     {
         while(!kbhit())
         {
             clock_t start_time = clock();
+            //tempo para atualizar tela
             while (clock() < start_time + milli_seconds);
             system("cls");
+            //imprime tela com a snake
             scre.PrintScreen1(ScreenPrint);
-            cout<<"coord:"<<snak.returnX()<<"|"<<snak.returnY()<<endl;
+            cout<<"coord:"<<scre.GetX()<<"|"<<scre.GetY()<<endl;
         }
         c=getch();
-        switch(toupper(c)){
-        case 'W':
-            ScreenPrint[snak.returnY()][snak.returnX()]=' ';
-            snak.setY(-1);
-            if(snak.returnY()==0 )
-                for(;;)
-                cout<<"LIMITE"<<endl;
-            ScreenPrint[snak.returnY()][snak.returnX()]=254;
-            cout<<"tecla: w  ->"<<snak.returnX()<<"|"<<snak.returnY();
-            break;
-        case 'A':
-            ScreenPrint[snak.returnY()][snak.returnX()]=' ';
-            snak.setX(-1);
-            if(snak.returnX()==0 )
-                for(;;)
-                cout<<"LIMITE"<<endl;
-            ScreenPrint[snak.returnY()][snak.returnX()]=254;
-            cout<<"tecla: A  ->"<<snak.returnX()<<"|"<<snak.returnY();
-            break;
-        case 'S':
-            ScreenPrint[snak.returnY()][snak.returnX()]=' ';
-            snak.setY(1);
-            if(snak.returnY()==MaxC-1)
-                for(;;)
-                    cout<<"LIMITE"<<endl;
-            ScreenPrint[snak.returnY()][snak.returnX()]=254;
-            cout<<"tecla: S  ->"<<snak.returnX()<<"|"<<snak.returnY();
-            break;
-        case 'D':
-            ScreenPrint[snak.returnY()][snak.returnX()]=' ';
-            snak.setX(1);
-            if(snak.returnX()==MaxL-1)
-                for(;;)
-                    cout<<"LIMITE"<<endl;
-            ScreenPrint[snak.returnY()][snak.returnX()]=254;
-            cout<<"tecla: D  ->"<<snak.returnX()<<"|"<<snak.returnY();
-            break;
-        default:
+        //atualiza a posiçao da snake
+        if(scre.ScreenSnakeUpdate(c, ScreenPrint)==-1)
+        {
+            cout<<"\n\n\aGAME OVER"<<endl;
             break;
         }
-
     }
 
     return 0;

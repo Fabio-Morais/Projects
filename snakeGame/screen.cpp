@@ -17,7 +17,7 @@ screen::~screen()
 }
 
 
-void screen::BootScreen(char ScreenPrint[MaxC][MaxL])
+void screen::BootScreen(char ScreenPrint[MaxC][MaxL], int ascii)
 {
 // 178
     int i, j;
@@ -28,16 +28,16 @@ void screen::BootScreen(char ScreenPrint[MaxC][MaxL])
 
     for(i=0; i<MaxL; i++)
     {
-        ScreenPrint[0][i]=254;
-        ScreenPrint[MaxC-1][i]=254;
+        ScreenPrint[0][i]=ascii;
+        ScreenPrint[MaxC-1][i]=ascii;
         if(i<MaxC)
         {
             if(i==0)
                 continue;
             if(i==MaxC-1)
                 continue;
-            ScreenPrint[i][0]=178;
-            ScreenPrint[i][MaxL-1]=178;
+            ScreenPrint[i][0]=ascii;
+            ScreenPrint[i][MaxL-1]=ascii;
 
         }
     }
@@ -60,6 +60,45 @@ void screen::PrintScreen1(char ScreenPrint[MaxC][MaxL])
         }
 
     }
+}
+/* RETURN -1 IF FIND THE LIMIT SCREEN */
+int screen::ScreenSnakeUpdate(char c, char ScreenPrint[MaxC][MaxL])
+{
 
+    switch(toupper(c))    {
+    case 'W':
+        ScreenPrint[GetY()][GetX()]=' ';
+        setY(-1);
+        ScreenPrint[GetY()][GetX()]=254;
+        cout<<"tecla: w  ->"<<GetX()<<"|"<<GetY();
+        break;
+    case 'A':
+        ScreenPrint[GetY()][GetX()]=' ';
+        setX(-1);
+        ScreenPrint[GetY()][GetX()]=254;
+        cout<<"tecla: A  ->"<<GetX()<<"|"<<GetY();
+        break;
+    case 'S':
+        ScreenPrint[GetY()][GetX()]=' ';
+        setY(1);
+        ScreenPrint[GetY()][GetX()]=254;
+        cout<<"tecla: S  ->"<<GetX()<<"|"<<GetY();
+        break;
+    case 'D':
+        ScreenPrint[GetY()][GetX()]=' ';
+        setX(1);
+        ScreenPrint[GetY()][GetX()]=254;
+        cout<<"tecla: D  ->"<<GetX()<<"|"<<GetY();
+        break;
+    default:
+        break;
+    }
+
+    /*  SCREEN LIMIT */
+    if(GetX()<=0 || GetY()<=0 || GetX()>=MaxL-1 || GetY()>=MaxC-1)
+             return -1;
+
+    else
+        return 1;
 }
 
