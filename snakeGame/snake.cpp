@@ -2,8 +2,11 @@
 
 snake::snake()
 {
-    setX(MaxL/2);
-    setY(MaxC/2);
+//    setX(MaxL/2);
+//    setY(MaxC/2);
+    setX(0);
+    setY(0);
+
 }
 
 snake::~snake()
@@ -13,6 +16,7 @@ snake::~snake()
 
 void snake::setX(int x)
 {
+
     if(x==1)
         CoordX++;
     else if(x==-1)
@@ -23,34 +27,41 @@ void snake::setX(int x)
 
 void snake::setY(int y)
 {
+
     if(y==1)
         CoordY++;
     else if(y==-1)
         CoordY--;
+
     else
         CoordY=y;
 }
+
 int snake::GetX()
 {
-    return CoordX;
+    return CoordX+margem+1;
 }
 int snake::GetY()
 {
-    return CoordY;
+    return CoordY+margem+1;
 }
 
-int snake::GetXFood(){
-return CoordXFood;
+int snake::GetXFood()
+{
+    return CoordXFood;
 }
 
-int snake::GetYFood(){
-return CoordYFood;
+int snake::GetYFood()
+{
+    return CoordYFood;
 }
-void snake::setXFood(int x){
-CoordXFood=x;
+void snake::setXFood(int x)
+{
+    CoordXFood=x;
 }
 
 
-void snake::setYFood(int y){
-CoordYFood=y;
+void snake::setYFood(int y)
+{
+    CoordYFood=y;
 }

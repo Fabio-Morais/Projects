@@ -1,6 +1,7 @@
 #include <iostream>
 #include "screen.h"
 #include "snake.h"
+#include "menu.h"
 #include<stdlib.h>
 #include<conio.h>
 #include <ctype.h>
@@ -10,36 +11,44 @@ using namespace std;
 int main()
 {
     char c=' ';
-    int validation=0, food=-1;
+    int validation=0, food=-1, points=0, nivel;
     screen scre;
     snake snak;
+    menu men;
+    nivel=men.MenuNivel();
+    scre.ClearScreen();
+    men.Load();
+    scre.ClearScreen();
     //inicializa a tela com o valor ascii que pretender
-
     for(;;)
     {
-        while(kbhit())
-            c=getch();
+        scre.PrintScreen(177);
 
-        scre.Delay(100);
-        scre.ClearScreen();
-        //imprime tela com a snake
-        scre.PrintScreen1(177);
-        cout<<"coord:"<<scre.GetX()<<"|"<<scre.GetY()<<" -> "<<c<<endl;
-        if(validation=scre.MoveSnake(c)==-1)
-            break;
+        for(;;)
+        {
+            while(kbhit())
+                c=getch();
+            scre.PrintSnake(190);
+            scre.Delay(nivel);
+            //imprime tela com a snake
+
+            if(validation=scre.MoveSnake(c)==-1)
+                break;
 
             scre.GenerateFood(&food);
-        //atualiza a posiçao da snake e verifica se chega ao limite
+            scre.FoodValidation(&food, &points); /*  POINTS */
+            //atualiza a posiçao da snake e verifica se chega ao limite
 
-        if( validation==-1)
-        {
-            cout<<"\n\n\aGAME OVER"<<endl;
-            break;
+
+
         }
-
-
-
+        scre.ClearScreen();
+        scre.setX(0);
+        scre.setY(0);
+        c=' '; // Reset the c variable
+        validation=0;
     }
+
 
     return 0;
 }
