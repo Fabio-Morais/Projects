@@ -20,12 +20,16 @@ class screen : public snake
         virtual ~screen();
         void ClearScreen();
         void ClearSnake(int x, int y);
+        void ResetMove(char *c);
         void Delay(unsigned int mseconds);
         void PrintScreen(int ascii);// imprime tela
         void PrintSnake(int ascii);// imprime tela
-        int MoveSnake(char c);
-        void GenerateFood(int *food);
+        int MoveSnake(char c, int BodyCount, int flag);
+        void GenerateFood(int *food, int points);
         void FoodValidation(int *food, int *points);
+        void PrintBody(int indice);
+        void IncreaseBodySize(int indice);
+//        void SetBody(int indice, char c);
     protected:
 
     private:

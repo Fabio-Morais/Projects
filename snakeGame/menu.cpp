@@ -45,7 +45,7 @@ int menu::MenuNivel()
         return 40;
         break;
     case 4:
-        return 10;
+        return 20;
         break;
     default:
         break;

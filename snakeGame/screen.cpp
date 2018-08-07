@@ -37,10 +37,16 @@ void screen::ClearScreen()
 {
     system("cls");
 }
-void screen::ClearSnake(int x, int y){
- gotoXY(x, y);
- cout<<  " ";
+void screen::ClearSnake(int x, int y)
+{
+    gotoXY(x, y);
+    cout<< " ";
 
+}
+
+void screen::ResetMove(char *c)
+{
+    (*c)=' ';
 }
 
 void screen::Delay(unsigned int mseconds)
@@ -60,7 +66,7 @@ void screen::Delay(unsigned int mseconds)
 void screen::PrintScreen(int ascii)
 {
 
-    int i, j;
+    int i;
     gotoXY(10,2);
     cout<<"------------->x  Coord: da tela interior 1->"<<largura-2<< " | coord: da tela real 11->"<<largura+9;
     gotoXY(10,3);
@@ -71,6 +77,7 @@ void screen::PrintScreen(int ascii)
     cout<<"|";
     gotoXY(10,6);
     cout<<"y  Coord: da tela interior 1->"<<altura-1<< " | coord: da tela real 11->"<<altura+9;
+    cout<<"\nC:"<<GetXBody(0)<<","<<GetYBody(0)<<"-"<< GetXBody(1)<<","<<GetYBody(1)<<"---";
 
 
 
@@ -92,7 +99,8 @@ void screen::PrintScreen(int ascii)
 
 
 }
-void screen::PrintSnake(int ascii){
+void screen::PrintSnake(int ascii)
+{
     gotoXY(GetX(), GetY());
     cout<<(char)ascii;
 }
@@ -100,26 +108,45 @@ void screen::PrintSnake(int ascii){
 
 /* RETURN -1 IF FIND THE LIMIT SCREEN */
 
-int screen::MoveSnake(char c)
+int screen::MoveSnake(char c, int BodyCount, int flag)
 {
+    int i;
+    if(c==' ') /*para continuar a andar*/
+        c= GetDirection();
 
+    if(BodyCount>0 && flag>0) /* SE TIVER 1 OU + ELEMENTOS NO CORPO ENTRA */
+    {
+        for(i=BodyCount-1; i>=0; i--)
+        {
+            ClearSnake(GetXBody(i), GetYBody(i));
+            if(i==0)
+                setXYBody(GetX(), GetY(), i);
+            else
+                setXYBody(GetXBody(i-1), GetYBody(i-1), i); /*VAI BUSCAR AO ELEMENTO DA FRENTE*/
+                /* VAI TER DE BUSCAR O ANTERIOR AO DE CIMA, NAO PODE IR BUSCAR A ESTE*/
+        }
 
+    }
     switch(toupper(c))
     {
     case UP:
         ClearSnake(GetX(), GetY());
+        SetDirection(c);
         setY(-1);
         break;
     case LEFT:
         ClearSnake(GetX(), GetY());
+        SetDirection(c);
         setX(-1);
         break;
     case DOWN:
         ClearSnake(GetX(), GetY());
+        SetDirection(c);
         setY(1);
         break;
     case RIGHT:
         ClearSnake(GetX(), GetY());
+        SetDirection(c);
         setX(1);
         break;
     default:
@@ -133,7 +160,7 @@ int screen::MoveSnake(char c)
 }
 
 /* If food=-1, generate food*/
-void screen::GenerateFood(int *food)
+void screen::GenerateFood(int *food, int points)
 {
 
     /** y-> 11 a altura+9
@@ -144,8 +171,8 @@ void screen::GenerateFood(int *food)
     if((*food)==-1)
     {
         /* rand() % (MAX+MIN) + MIN*/
-        y=rand() % ((altura+margem)-11) + 11;
-        x=rand() % ((largura+margem)-11) + 11;
+        y=rand() % ((altura+margem)-12) + 11;
+        x=rand() % ((largura+margem)-12) + 11;
 
         gotoXY(x, y);
         cout<<"o";
@@ -166,6 +193,9 @@ void screen::GenerateFood(int *food)
     gotoXY(16,4);
     cout<<"coord food: "<<GetXFood()<<","<< GetYFood();
     cout<<"\tcoord snake:"<<GetX()<<","<<GetY(); // debbug
+    cout<<"\n\tpoints:"<<points;
+        gotoXY(10,6);
+    cout<<"\nC:"<<GetXBody(0)<<","<<GetYBody(0)<<"-"<< GetXBody(1)<<","<<GetYBody(1)<<"---";
 }
 
 /*Return -1 if the snake eat the food */
@@ -180,4 +210,78 @@ void screen::FoodValidation(int *food, int *points)
 }
 
 
+void screen::PrintBody(int indice)
+{
 
+    int i;
+    if(indice>0)
+    {
+        for(i=0; i<indice; i++)
+        {
+
+            gotoXY(GetXBody(i), GetYBody(i));
+            cout<<(char)64;
+        }
+
+    }
+
+}
+
+
+
+
+
+
+//void screen::SetBody(int indice, char c){
+//    if(indice<0)
+//        return;
+//
+//switch(toupper(c))
+//    {
+//    case UP:
+//        setY(1);
+//        setXYBody(GetX(), GetY(), indice, body);
+//        setY(-1);
+//        break;
+//    case LEFT:
+//        setX(1);
+//        setXYBody(GetX(), GetY(), indice, body);
+//        setX(-1);
+//        break;
+//    case DOWN:
+//        setY(-1);
+//        setXYBody(GetX(), GetY(), indice, body);
+//        setY(1);
+//        break;
+//    case RIGHT:
+//        setX(-1);
+//        setXYBody(GetX(), GetY(), indice, body);
+//        setX(1);
+//        break;
+//    default:
+//        break;
+//    }
+//}
+
+
+void screen::IncreaseBodySize(int indice)
+{
+    char c=GetDirection();
+    switch(c)
+    {
+    case UP:
+        setXYBody(GetXBody(indice-1), GetYBody(indice-1)+1, indice);
+        break;
+    case LEFT:
+        setXYBody(GetXBody(indice-1)+1, GetYBody(indice-1), indice);
+        break;
+    case DOWN:
+        setXYBody(GetXBody(indice-1), GetYBody(indice-1)-1, indice);
+        break;
+    case RIGHT:
+        setXYBody(GetXBody(indice-1)-1, GetYBody(indice-1), indice);
+        break;
+    default:
+        break;
+    }
+}
