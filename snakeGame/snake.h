@@ -17,7 +17,9 @@ public:
     snake();
     virtual ~snake();
     void SetDirection(char c);
+    void SetBodyDirection(char c, int indice);
     char GetDirection();
+    char GetBodyDirection(int indice);
     void setX(int x);
     void setY(int y);
     void setXYBody(int x,int y, int indice);
@@ -37,7 +39,7 @@ private:
     int CoordY;
     int CoordXFood;
     int CoordYFood;
-    Coord body[30];
+    Coord body[70];
 };
 
 #endif // SNAKE_H

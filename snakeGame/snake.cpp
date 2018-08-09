@@ -23,10 +23,19 @@ void snake::SetDirection(char c)
 {
     Direction= c;
 }
+void snake::SetBodyDirection(char c, int indice){
+    body[indice].direction=c;
+
+}
 char snake::GetDirection()
 {
     return Direction;
 }
+char snake::GetBodyDirection(int indice)
+{
+    return body[indice].direction;
+}
+
 
 void snake::setX(int x)
 {

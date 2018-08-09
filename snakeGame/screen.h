@@ -29,6 +29,10 @@ class screen : public snake
         void FoodValidation(int *food, int *points);
         void PrintBody(int indice);
         void IncreaseBodySize(int indice);
+        void ResetGame(char *c, int *validation, int *points, int *flag);
+        void InvalidMove(char *c, char *d);
+        int BodyLimits(int points);
+        void Imprime(int indice);
 //        void SetBody(int indice, char c);
     protected:
 

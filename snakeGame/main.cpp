@@ -10,7 +10,7 @@ using namespace std;
 
 int main()
 {
-    char c=' ';
+    char c=' ', assistant_char;
     int validation=0, food=-1, points=0, nivel, flag=0, assistant_valid=0;
     screen scre;
     snake snak;
@@ -30,38 +30,36 @@ int main()
                {
                  c=getch();
                  flag++;
+                scre.InvalidMove(&c, &assistant_char);
                }
-            scre.PrintSnake(190);
+            scre.PrintSnake(94);
             scre.Delay(nivel);
 
             //imprime tela com a snake
             if(validation=scre.MoveSnake(c, points+3, flag)==-1)
                 break;
+            if(validation=scre.BodyLimits(points+3)==-1)
+                break;
+            scre.PrintSnake(94);
+            scre.PrintBody(points+3);   // imprime corpo da cobra
 
-            scre.PrintBody(points+3);
-
-            assistant_valid=points;
+            assistant_valid=points; /*Confirmar se aumentou ou manteve os pontos em cada ciclo*/
 
             scre.GenerateFood(&food, points);
             scre.FoodValidation(&food, &points); /*  POINTS */
             //atualiza a posiçao da snake e verifica se chega ao limite
-            if(assistant_valid!=points && points>0)
-                scre.IncreaseBodySize(points);
-            scre.ResetMove(&c);
 
+//            if(assistant_valid!=points && points>0)
+//                scre.IncreaseBodySize(points+3);
+
+            if(c!=' ')
+                assistant_char=c; // Para nao ser possivel andar para a esquerda quando estamos a andar para direita
+            scre.Imprime(points+3);
+
+             scre.ResetMove(&c);
         }
         /* *colocar numa classe* */
-        scre.ClearScreen();
-        scre.setX(10);
-        scre.setY(10);
-        scre.setXYBody(9+margem+1,10+margem+1,0);
-        scre.setXYBody(9+margem+1-1,10+margem+1,1);
-        scre.setXYBody(9+margem+1-2,10+margem+1,2);
-        scre.SetDirection(' ');
-        scre.ResetMove(&c); // Reset the c variable
-        validation=0;
-        points=0;
-        flag=0;
+    scre.ResetGame(&c, &validation, &points, &flag);
     }
 
 

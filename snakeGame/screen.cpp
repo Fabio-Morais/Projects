@@ -5,6 +5,7 @@
 #include <iomanip>
 #include<windows.h>
 #include <time.h>
+#include <stdio.h>
 
 #define UP 'W'
 #define DOWN 'S'
@@ -40,7 +41,7 @@ void screen::ClearScreen()
 void screen::ClearSnake(int x, int y)
 {
     gotoXY(x, y);
-    cout<< " ";
+    cout<<" ";
 
 }
 
@@ -114,8 +115,10 @@ int screen::MoveSnake(char c, int BodyCount, int flag)
     if(c==' ') /*para continuar a andar*/
         c= GetDirection();
 
-    if(BodyCount>0 && flag>0) /* SE TIVER 1 OU + ELEMENTOS NO CORPO ENTRA */
+    if(flag>0) /* SE TIVER 1 OU + ELEMENTOS NO CORPO ENTRA */
     {
+        /*ERRO AQUI, MODIFICAR*/
+        /*TENHO DE COMEÇAR EM 0 E IR SUBINDO*/
         for(i=BodyCount-1; i>=0; i--)
         {
             ClearSnake(GetXBody(i), GetYBody(i));
@@ -125,6 +128,9 @@ int screen::MoveSnake(char c, int BodyCount, int flag)
                 setXYBody(GetXBody(i-1), GetYBody(i-1), i); /*VAI BUSCAR AO ELEMENTO DA FRENTE*/
                 /* VAI TER DE BUSCAR O ANTERIOR AO DE CIMA, NAO PODE IR BUSCAR A ESTE*/
         }
+//        for(i=BodyCount-1; i>=0; i--)
+//            ClearSnake(GetXBody(i), GetYBody(i));
+
 
     }
     switch(toupper(c))
@@ -205,7 +211,7 @@ void screen::FoodValidation(int *food, int *points)
     if(GetX()== GetXFood() && GetY() == GetYFood())
     {
         (*food)= -1;
-        (*points)++;
+        (*points)+=4;
     }
 }
 
@@ -228,60 +234,103 @@ void screen::PrintBody(int indice)
 }
 
 
-
-
-
-
-//void screen::SetBody(int indice, char c){
-//    if(indice<0)
-//        return;
-//
-//switch(toupper(c))
-//    {
-//    case UP:
-//        setY(1);
-//        setXYBody(GetX(), GetY(), indice, body);
-//        setY(-1);
-//        break;
-//    case LEFT:
-//        setX(1);
-//        setXYBody(GetX(), GetY(), indice, body);
-//        setX(-1);
-//        break;
-//    case DOWN:
-//        setY(-1);
-//        setXYBody(GetX(), GetY(), indice, body);
-//        setY(1);
-//        break;
-//    case RIGHT:
-//        setX(-1);
-//        setXYBody(GetX(), GetY(), indice, body);
-//        setX(1);
-//        break;
-//    default:
-//        break;
-//    }
-//}
-
+/*É PRECISO CORRIGIR*/
+/*SET DIRECTION PARA TODOS*/
 
 void screen::IncreaseBodySize(int indice)
 {
-    char c=GetDirection();
+    int xDir=0, yDir=0;
+
+
+    xDir=GetXBody(indice-1)-GetXBody(indice-2);
+    //POS, ENTAO ANDA PARA ESQUERDA
+    //NEG, ANDA PARA DIREITA
+    yDir=GetYBody(indice-1)-GetYBody(indice-2);
+    //POS, ENTAO ANDA PARA CIMA
+    //NEG, ANDA PARA BAIXO
+
+    if(xDir>0)
+        SetBodyDirection(LEFT, indice-1);
+        else
+            if(xDir<0)
+                SetBodyDirection(RIGHT, indice-1);
+    if(yDir>0)
+        SetBodyDirection(LEFT, indice-1);
+        else
+            if(yDir<0)
+                SetBodyDirection(RIGHT, indice-1);
+
+    char c=GetBodyDirection(indice-1);
+
     switch(c)
     {
     case UP:
+        setXYBody(GetXBody(indice-2), GetYBody(indice-2)+1, indice-1);
         setXYBody(GetXBody(indice-1), GetYBody(indice-1)+1, indice);
         break;
     case LEFT:
+        setXYBody(GetXBody(indice-2)+1, GetYBody(indice-2), indice-1);
         setXYBody(GetXBody(indice-1)+1, GetYBody(indice-1), indice);
         break;
     case DOWN:
+        setXYBody(GetXBody(indice-2), GetYBody(indice-2)-1, indice-1);
         setXYBody(GetXBody(indice-1), GetYBody(indice-1)-1, indice);
         break;
     case RIGHT:
+        setXYBody(GetXBody(indice-2)-1, GetYBody(indice-2), indice-1);
         setXYBody(GetXBody(indice-1)-1, GetYBody(indice-1), indice);
         break;
     default:
         break;
     }
+}
+
+
+void screen::ResetGame(char *c, int *validation, int *points, int *flag){
+        ClearScreen();
+        setX(10);
+        setY(10);
+        setXYBody(9+margem+1,10+margem+1,0);
+        setXYBody(9+margem+1-1,10+margem+1,1);
+        setXYBody(9+margem+1-2,10+margem+1,2);
+        SetDirection(' ');
+        (*c)=' ';
+        (*validation)=0;
+        (*points)=0;
+        (*flag)=0;
+}
+
+
+void screen::InvalidMove(char *c, char *d){
+(*c)=toupper((*c));
+(*d)=toupper((*d));
+
+    if((*c)==LEFT && (*d)==RIGHT)
+        (*c)=' ';
+    if((*c)==RIGHT && (*d)==LEFT)
+        (*c)=' ';
+    if((*c)==UP && (*d)==DOWN)
+        (*c)=' ';
+    if((*c)==DOWN && (*d)==UP)
+        (*c)=' ';
+}
+
+
+int screen::BodyLimits(int points){
+int i, validation=0;
+    for(i=0; i<points; i++)
+    {
+        if(GetX()==GetXBody(i) && GetY()==GetYBody(i))
+            validation=1;
+    }
+    if(validation==1)
+        return -1;
+    else
+        return 1;
+}
+void screen::Imprime(int indice){
+int i;
+gotoXY(5, altura+margem+5);
+for(i=0; i<indice; i++)
+    cout<<GetXBody(i)<<","<<GetYBody(i)<<" | ";
 }
