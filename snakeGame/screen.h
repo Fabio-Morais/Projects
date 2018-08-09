@@ -1,8 +1,8 @@
 #ifndef SCREEN_H
 #define SCREEN_H
 #include "snake.h"
-#define largura 70
-#define altura 25
+#define largura 60
+#define altura 20
 #define margem 10
 #define TIME 1000 * 0.2
 /* screen coordinates
@@ -19,6 +19,7 @@ class screen : public snake
         screen();
         virtual ~screen();
         void ClearScreen();
+        void CleanBody();
         void ClearSnake(int x, int y);
         void ResetMove(char *c);
         void Delay(unsigned int mseconds);
@@ -32,7 +33,6 @@ class screen : public snake
         void ResetGame(char *c, int *validation, int *points, int *flag);
         void InvalidMove(char *c, char *d);
         int BodyLimits(int points);
-        void Imprime(int indice);
 //        void SetBody(int indice, char c);
     protected:
 

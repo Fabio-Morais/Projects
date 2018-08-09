@@ -15,6 +15,7 @@ int main()
     screen scre;
     snake snak;
     menu men;
+    scre.CleanBody();
     nivel=men.MenuNivel();
     scre.ClearScreen();
     //men.Load();
@@ -49,12 +50,11 @@ int main()
             scre.FoodValidation(&food, &points); /*  POINTS */
             //atualiza a posiçao da snake e verifica se chega ao limite
 
-//            if(assistant_valid!=points && points>0)
-//                scre.IncreaseBodySize(points+3);
+            if(assistant_valid!=points && points>0)
+                scre.IncreaseBodySize(points+3);
 
             if(c!=' ')
                 assistant_char=c; // Para nao ser possivel andar para a esquerda quando estamos a andar para direita
-            scre.Imprime(points+3);
 
              scre.ResetMove(&c);
         }

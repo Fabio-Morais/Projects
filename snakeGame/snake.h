@@ -1,7 +1,7 @@
 #ifndef SNAKE_H
 #define SNAKE_H
-#define MaxL 70
-#define MaxC 25
+#define MaxL 60
+#define MaxC 22
 #define margem 10
 
 struct Coordinate{

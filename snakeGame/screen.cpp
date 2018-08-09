@@ -34,6 +34,15 @@ void gotoXY(int x, int y)
         x-1,y-1
     });
 }
+
+void screen::CleanBody(){
+int i;
+for(i=3; i<70; i++)
+{
+    setXYBody(0,0,i);
+}
+
+}
 void screen::ClearScreen()
 {
     system("cls");
@@ -128,9 +137,6 @@ int screen::MoveSnake(char c, int BodyCount, int flag)
                 setXYBody(GetXBody(i-1), GetYBody(i-1), i); /*VAI BUSCAR AO ELEMENTO DA FRENTE*/
                 /* VAI TER DE BUSCAR O ANTERIOR AO DE CIMA, NAO PODE IR BUSCAR A ESTE*/
         }
-//        for(i=BodyCount-1; i>=0; i--)
-//            ClearSnake(GetXBody(i), GetYBody(i));
-
 
     }
     switch(toupper(c))
@@ -211,7 +217,7 @@ void screen::FoodValidation(int *food, int *points)
     if(GetX()== GetXFood() && GetY() == GetYFood())
     {
         (*food)= -1;
-        (*points)+=4;
+        (*points)+=3;
     }
 }
 
@@ -240,12 +246,12 @@ void screen::PrintBody(int indice)
 void screen::IncreaseBodySize(int indice)
 {
     int xDir=0, yDir=0;
+// indice -4 e -5 caso utilizemos 3 pontos por cada comida
 
-
-    xDir=GetXBody(indice-1)-GetXBody(indice-2);
+    xDir=GetXBody(indice-4)-GetXBody(indice-5);
     //POS, ENTAO ANDA PARA ESQUERDA
     //NEG, ANDA PARA DIREITA
-    yDir=GetYBody(indice-1)-GetYBody(indice-2);
+    yDir=GetYBody(indice-4)-GetYBody(indice-5);
     //POS, ENTAO ANDA PARA CIMA
     //NEG, ANDA PARA BAIXO
 
@@ -265,20 +271,24 @@ void screen::IncreaseBodySize(int indice)
     switch(c)
     {
     case UP:
+        setXYBody(GetXBody(indice-4), GetYBody(indice-4)+1, indice-3);
+        setXYBody(GetXBody(indice-3), GetYBody(indice-3)+1, indice-2);
         setXYBody(GetXBody(indice-2), GetYBody(indice-2)+1, indice-1);
-        setXYBody(GetXBody(indice-1), GetYBody(indice-1)+1, indice);
         break;
     case LEFT:
+        setXYBody(GetXBody(indice-4)+1, GetYBody(indice-4), indice-3);
+        setXYBody(GetXBody(indice-3)+1, GetYBody(indice-3), indice-2);
         setXYBody(GetXBody(indice-2)+1, GetYBody(indice-2), indice-1);
-        setXYBody(GetXBody(indice-1)+1, GetYBody(indice-1), indice);
         break;
     case DOWN:
+        setXYBody(GetXBody(indice-4), GetYBody(indice-4)-1, indice-3);
+        setXYBody(GetXBody(indice-3), GetYBody(indice-3)-1, indice-2);
         setXYBody(GetXBody(indice-2), GetYBody(indice-2)-1, indice-1);
-        setXYBody(GetXBody(indice-1), GetYBody(indice-1)-1, indice);
         break;
     case RIGHT:
+        setXYBody(GetXBody(indice-4)-1, GetYBody(indice-4), indice-3);
+        setXYBody(GetXBody(indice-3)-1, GetYBody(indice-3), indice-2);
         setXYBody(GetXBody(indice-2)-1, GetYBody(indice-2), indice-1);
-        setXYBody(GetXBody(indice-1)-1, GetYBody(indice-1), indice);
         break;
     default:
         break;
@@ -327,10 +337,4 @@ int i, validation=0;
         return -1;
     else
         return 1;
-}
-void screen::Imprime(int indice){
-int i;
-gotoXY(5, altura+margem+5);
-for(i=0; i<indice; i++)
-    cout<<GetXBody(i)<<","<<GetYBody(i)<<" | ";
 }
