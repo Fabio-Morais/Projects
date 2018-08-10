@@ -75,22 +75,9 @@ void screen::Delay(unsigned int mseconds)
 
 void screen::PrintScreen(int ascii)
 {
-
-    int i;
-    gotoXY(10,2);
-    cout<<"------------->x  Coord: da tela interior 1->"<<largura-2<< " | coord: da tela real 11->"<<largura+9;
-    gotoXY(10,3);
-    cout<<"|";
-    gotoXY(10,4);
-    cout<<"|";
-    gotoXY(10,5);
-    cout<<"|";
-    gotoXY(10,6);
-    cout<<"y  Coord: da tela interior 1->"<<altura-1<< " | coord: da tela real 11->"<<altura+9;
-    cout<<"\nC:"<<GetXBody(0)<<","<<GetYBody(0)<<"-"<< GetXBody(1)<<","<<GetYBody(1)<<"---";
-
-
-
+int i;
+gotoXY(largura/2, 1);
+cout<<"** SNAKE GAME **";
 
     for(i=margem; i<=largura+margem; i++)
     {
@@ -109,8 +96,24 @@ void screen::PrintScreen(int ascii)
 
 
 }
-void screen::PrintSnake(int ascii)
-{
+void screen::PrintSnake(int flag)
+{ int ascii;
+
+if(flag==0)
+    ascii=62;
+    else
+        if(GetDirection()==UP)
+            ascii=94;
+            else
+                if(GetDirection()==DOWN)
+                    ascii=118;
+                    else
+                        if(GetDirection()==LEFT)
+                            ascii=60;
+                            else
+                                if(GetDirection()==RIGHT)
+                                ascii=62;
+
     gotoXY(GetX(), GetY());
     cout<<(char)ascii;
 }
@@ -202,12 +205,7 @@ void screen::GenerateFood(int *food, int points)
     }
 
 
-    gotoXY(16,4);
-    cout<<"coord food: "<<GetXFood()<<","<< GetYFood();
-    cout<<"\tcoord snake:"<<GetX()<<","<<GetY(); // debbug
-    cout<<"\n\tpoints:"<<points;
-        gotoXY(10,6);
-    cout<<"\nC:"<<GetXBody(0)<<","<<GetYBody(0)<<"-"<< GetXBody(1)<<","<<GetYBody(1)<<"---";
+
 }
 
 /*Return -1 if the snake eat the food */
@@ -337,4 +335,12 @@ int i, validation=0;
         return -1;
     else
         return 1;
+}
+
+
+void screen::PrintInfo(int points, int lives){
+
+        gotoXY((largura+margem)/2-10, margem-1);
+        cout<<"Points: "<<points<<setw(30)<<"lives: "<<lives;
+
 }

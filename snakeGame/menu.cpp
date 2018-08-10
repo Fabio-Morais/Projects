@@ -25,7 +25,10 @@ void gotoxy(int x, int y)
 int menu::MenuNivel()
 {
     int nivel;
-    cout<<"Qual o nivel que deseja jogar?"<<endl;
+    gotoxy(20,1);
+    cout<< "#### WELCOME TO SNAKE GAME ####"<<endl;
+    gotoxy(10,5);
+    cout<<"Qual o nivel que deseja jogar?\n\n"<<endl;
     cout<<"1-Nivel 1\n2-Nivel 2\n3-Nivel 3\n4-Chuck Norris Nivel"<<endl;
     do
     {

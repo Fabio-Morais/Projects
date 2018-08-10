@@ -24,7 +24,7 @@ class screen : public snake
         void ResetMove(char *c);
         void Delay(unsigned int mseconds);
         void PrintScreen(int ascii);// imprime tela
-        void PrintSnake(int ascii);// imprime tela
+        void PrintSnake(int flag);// imprime tela
         int MoveSnake(char c, int BodyCount, int flag);
         void GenerateFood(int *food, int points);
         void FoodValidation(int *food, int *points);
@@ -33,6 +33,7 @@ class screen : public snake
         void ResetGame(char *c, int *validation, int *points, int *flag);
         void InvalidMove(char *c, char *d);
         int BodyLimits(int points);
+        void PrintInfo(int points, int lives);
 //        void SetBody(int indice, char c);
     protected:
 

@@ -11,7 +11,7 @@ using namespace std;
 int main()
 {
     char c=' ', assistant_char;
-    int validation=0, food=-1, points=0, nivel, flag=0, assistant_valid=0;
+    int validation=0, food=-1, points=0, nivel, flag=0, assistant_valid=0, lives=3;
     screen scre;
     snake snak;
     menu men;
@@ -24,7 +24,6 @@ int main()
     for(;;)
     {
         scre.PrintScreen(177);
-
         for(;;)
         {
             while(kbhit())
@@ -33,7 +32,8 @@ int main()
                  flag++;
                 scre.InvalidMove(&c, &assistant_char);
                }
-            scre.PrintSnake(94);
+            scre.PrintInfo(points, lives);
+            scre.PrintSnake(flag);
             scre.Delay(nivel);
 
             //imprime tela com a snake
@@ -41,7 +41,7 @@ int main()
                 break;
             if(validation=scre.BodyLimits(points+3)==-1)
                 break;
-            scre.PrintSnake(94);
+            scre.PrintSnake(flag);
             scre.PrintBody(points+3);   // imprime corpo da cobra
 
             assistant_valid=points; /*Confirmar se aumentou ou manteve os pontos em cada ciclo*/
@@ -60,6 +60,11 @@ int main()
         }
         /* *colocar numa classe* */
     scre.ResetGame(&c, &validation, &points, &flag);
+    if(lives==0)
+        break;
+
+    lives--;
+
     }
 
 
