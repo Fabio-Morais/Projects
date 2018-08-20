@@ -9,6 +9,11 @@ class menu
         virtual ~menu();
         int MenuNivel();
         void Load();
+        void Logo();
+        void LogoMin();
+        int MenuInic();
+        int MenuValida(int j);
+        void Instructions();
 
     protected:
 

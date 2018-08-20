@@ -15,15 +15,22 @@ int main()
     screen scre;
     snake snak;
     menu men;
+
+
     scre.CleanBody();
-    nivel=men.MenuNivel();
+    do{
+    nivel= men.MenuValida( men.MenuInic());
+    if( nivel ==-1)
+        goto GoEnd;
+    }while(nivel==1);
     scre.ClearScreen();
     //men.Load();
     scre.ClearScreen();
     //inicializa a tela com o valor ascii que pretender
     for(;;)
     {
-        scre.PrintScreen(177);
+        scre.PrintScreen(309);
+        men.LogoMin();
         for(;;)
         {
             while(kbhit())
@@ -66,7 +73,7 @@ int main()
     lives--;
 
     }
-
+    GoEnd:
 
     return 0;
 }

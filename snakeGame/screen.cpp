@@ -24,7 +24,8 @@ screen::screen()
 screen::~screen()
 {
     ClearScreen();
-    cout<<"\n\n\aThanks for playing\n Fa´bio Morais"<<endl;
+    setlocale(LC_ALL, "Portuguese");
+    cout<<"\n\n\aThanks for playing\n BY: Fábio Morais\n\n\n"<<endl;
     system("PAUSE");
 }
 void gotoXY(int x, int y)
