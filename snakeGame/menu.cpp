@@ -16,34 +16,66 @@ menu::~menu()
     //dtor
 }
 
+//J= 15, 17, 19, 21
 int menu::MenuNivel()
 {
     int nivel;
 
     Logo();
-    gotoxy(30,1);
-    cout<< "#### WELCOME TO ####"<<endl;
-    gotoxy(10,15);
-    cout<<"Qual o nivel que deseja jogar?\n\n"<<endl;
-    cout<<"1-Nivel 1\n2-Nivel 2\n3-Nivel 3\n4-Chuck Norris Nivel"<<endl;
+     int j=15;
+    Logo();
+    char tecla =' ';
     do
     {
-        cin>>nivel;
-    }
-    while(nivel>4 &&nivel<1);
-    switch(nivel)
+        textcolor(15);
+        gotoxy(37,15);
+        printf("NIVEL 1");
+        gotoxy(37,17);
+        printf("NIVEL 2");
+        gotoxy(37,19);
+        printf("NIVEL 3");
+        gotoxy(37,21);
+        printf("NIVEL 4");
+        gotoxy(35,j);
+        textcolor(10);
+        printf("%c",'>');
+        textcolor(15);
+        tecla = getch();
+        if (tecla == 72)
+        {
+                gotoxy(35,j);
+                printf(" ");
+            if(j == 15)
+                j = 23;
+            j = j - 2;
+        }
+        else
+        {
+            if(tecla == 80)
+            {
+                    gotoxy(35,j);
+                    printf(" ");
+                if(j == 21)
+                    j = 13;
+                j = j + 2;
+            }
+        }
+    }while(tecla != '\r');
+
+
+    switch(j)
     {
 
-    case 1:
+    case 15:
         return 170;
         break;
-    case 2:
+    case 17:
         return 100;
         break;
-    case 3:
+    case 19:
         return 40;
         break;
-    case 4:
+    case 21:
         return 20;
         break;
     default:
@@ -234,7 +266,7 @@ printf(" TOME CUIDADO COM AS PAREDES;");
 //gotoxy(18,23);
 //printf("(5) A CADA 5 DE COMIDA VOC%c PASSAR%c DE N%cVEL;", 210, 181, 214);
 gotoxy(18,19);
-printf(" VOC%c VENCER%c QUANDO PASSAR O N%cVEL 5;", 210, 181, 214);
+printf(" VOC%c VENCER%c QUANDO PASSAR O N%cVEL 4;", 210, 181, 214);
 
 gotoxy(18, 22);
 textcolor(4);

@@ -10,13 +10,14 @@ using namespace std;
 
 int main()
 {
-    char c=' ', assistant_char;
-    int validation=0, food=-1, points=0, nivel, flag=0, assistant_valid=0, lives=3;
+    char val,c=' ', assistant_char;
+    int validation=0, food=-1, points=0, nivel, flag=0, assistant_valid=0;
     screen scre;
     snake snak;
     menu men;
 
-
+    resetar:
+    int lives=3;
     scre.CleanBody();
     do{
     nivel= men.MenuValida( men.MenuInic());
@@ -29,7 +30,7 @@ int main()
     //inicializa a tela com o valor ascii que pretender
     for(;;)
     {
-        scre.PrintScreen(309);
+        scre.PrintScreen(219);
         men.LogoMin();
         for(;;)
         {
@@ -38,6 +39,8 @@ int main()
                  c=getch();
                  flag++;
                 scre.InvalidMove(&c, &assistant_char);
+                if(c!='W' && c!='D' && c!='S' && c!='A' )
+                    c=' ';
                }
             scre.PrintInfo(points, lives);
             scre.PrintSnake(flag);
@@ -68,7 +71,15 @@ int main()
         /* *colocar numa classe* */
     scre.ResetGame(&c, &validation, &points, &flag);
     if(lives==0)
-        break;
+        {
+            scre.ClearScreen();
+            cout<<"Deseja voltar ao menu principal?(y/n)"<<endl;
+            cin>>val;
+            if(val=='y')
+                goto resetar;
+            else
+                goto GoEnd;
+        }
 
     lives--;
 
