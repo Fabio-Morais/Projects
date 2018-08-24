@@ -4,7 +4,8 @@ My projects that I did for fun
 C and python
 
 ---
-#**Snake Game in C++**
+
+### Snake Game in C++
 
 ![sanke2](https://user-images.githubusercontent.com/35969631/44608060-64323d00-a7ea-11e8-935b-a6a968484f1e.PNG)
 
@@ -14,9 +15,18 @@ C and python
 
 ---
 
+### Binary Calculator in C
+
 ![calculadora](https://user-images.githubusercontent.com/35969631/44608055-6399a680-a7ea-11e8-97ce-944dddad61c2.PNG)
 
+---
+
+### "Jogo do Galo" in C
+
 ![galo](https://user-images.githubusercontent.com/35969631/44608056-6399a680-a7ea-11e8-801b-bc413b86560c.PNG)
+---
+
+### Quiz in C
 
 ![quiz1](https://user-images.githubusercontent.com/35969631/44608058-64323d00-a7ea-11e8-9803-fdf35fcbdd45.PNG)
 
