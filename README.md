@@ -28,8 +28,9 @@ C and python
 
 ### Quiz in C
 
+![quiz2](https://user-images.githubusercontent.com/35969631/44608059-64323d00-a7ea-11e8-9112-200f6740ecd8.PNG)
+
 ![quiz1](https://user-images.githubusercontent.com/35969631/44608058-64323d00-a7ea-11e8-9803-fdf35fcbdd45.PNG)
 
-![quiz2](https://user-images.githubusercontent.com/35969631/44608059-64323d00-a7ea-11e8-9112-200f6740ecd8.PNG)
 
 
