@@ -11,19 +11,19 @@ using namespace std;
 int main()
 {
     char val,c=' ', assistant_char;
-    int validation=0, food=-1, points=0, nivel, flag=0, assistant_valid=0;
+    int validation=0, food=-1, points=0, menuVa, flag=0, assistant_valid=0;
     screen scre;
     snake snak;
     menu men;
 
     resetar:
-    int lives=3;
+    int lives=3,  nivel=170;
     scre.CleanBody();
     do{
-    nivel= men.MenuValida( men.MenuInic());
-    if( nivel ==-1)
+    menuVa= men.MenuValida( men.MenuInic(), &nivel);
+    if( menuVa ==-1)
         goto GoEnd;
-    }while(nivel==1);
+    }while(menuVa==1);
     scre.ClearScreen();
     //men.Load();
     scre.ClearScreen();

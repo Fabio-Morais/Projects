@@ -12,7 +12,7 @@ class menu
         void Logo();
         void LogoMin();
         int MenuInic();
-        int MenuValida(int j);
+        int MenuValida(int j, int *nivel);
         void Instructions();
 
     protected:

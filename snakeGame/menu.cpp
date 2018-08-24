@@ -231,18 +231,18 @@ int menu::MenuInic(){
 
 }
 
-int menu::MenuValida(int j){
-
+int menu::MenuValida(int j, int *nivel){
 switch(j){
 case 15:
-    return 170; // valor do nivel 1
+    return *nivel; // valor do nivel 1
     break;
 case 17:
     Instructions();
     return 1;
     break;
 case 19:
-    return MenuNivel();
+    (*nivel)= MenuNivel();
+    return 1;
     break;
 case 21:
     return -1;
