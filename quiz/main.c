@@ -37,8 +37,8 @@ int main()
     vetor *perguntas= importa_perguntas(&n);
 
    menu_print_nivel(n);
-   menu_escolha_nivel(perguntas);
-////    imprime_perguntas(perguntas,1);
+   menu_escolha_nivel(perguntas, n);
+    imprime_perguntas(perguntas,1);
 
 /** armazenar numero de niveis existentes numa variavel **/
     top_score1=ler_pontu_ficheiro(1);

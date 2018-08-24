@@ -109,7 +109,7 @@
 
 1530754597 c:\users\fabio\onedrive\documentos\github\projects\quiz\heap.h
 
-1532455440 source:c:\users\fabio\onedrive\documentos\github\projects\quiz\main.c
+1535146014 source:c:\users\fabio\onedrive\documentos\github\projects\quiz\main.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
@@ -119,7 +119,7 @@
 	"tabdispersao.h"
 	<locale.h>
 
-1530744976 c:\users\fabio\onedrive\documentos\github\projects\quiz\funcoes.h
+1532522480 c:\users\fabio\onedrive\documentos\github\projects\quiz\funcoes.h
 	"tabdispersao.h"
 	"vetor.h"
 	"heap.h"
@@ -139,4 +139,16 @@
 	<string.h>
 	<stdlib.h>
 	<stdio.h>
+
+1532522479 source:c:\users\fabio\onedrive\documentos\github\projects\quiz\funcoes.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<conio.h>
+	"tabdispersao.h"
+	"vetor.h"
+	<time.h>
+	<locale.h>
+	<ctype.h>
+	"heap.h"
 

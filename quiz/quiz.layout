@@ -2,45 +2,24 @@
 <CodeBlocks_layout_file>
 	<FileVersion major="1" minor="0" />
 	<ActiveTarget name="Debug" />
-	<File name="funcoes.c" open="1" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="main.c" open="1" top="1" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="228" topLine="0" />
+			<Cursor1 position="899" topLine="30" />
 		</Cursor>
-		<Folding>
-			<Collapse line="17" />
-			<Collapse line="34" />
-			<Collapse line="51" />
-			<Collapse line="59" />
-			<Collapse line="77" />
-			<Collapse line="103" />
-			<Collapse line="108" />
-			<Collapse line="125" />
-			<Collapse line="168" />
-			<Collapse line="188" />
-			<Collapse line="202" />
-			<Collapse line="224" />
-			<Collapse line="254" />
-			<Collapse line="270" />
-			<Collapse line="308" />
-			<Collapse line="320" />
-			<Collapse line="329" />
-			<Collapse line="342" />
-			<Collapse line="454" />
-			<Collapse line="478" />
-			<Collapse line="507" />
-			<Collapse line="532" />
-			<Collapse line="598" />
-			<Collapse line="605" />
-		</Folding>
 	</File>
-	<File name="main.c" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="funcoes.c" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="1090" topLine="4" />
+			<Cursor1 position="13777" topLine="450" />
+		</Cursor>
+	</File>
+	<File name="funcoes.h" open="1" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="126" topLine="0" />
 		</Cursor>
 	</File>
 	<File name="heap.h" open="1" top="0" tabpos="9" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="762" topLine="0" />
+			<Cursor1 position="412" topLine="0" />
 		</Cursor>
 	</File>
 	<File name="tabdispersao.c" open="1" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -50,7 +29,6 @@
 		<Folding>
 			<Collapse line="10" />
 			<Collapse line="33" />
-			<Collapse line="105" />
 		</Folding>
 	</File>
 	<File name="tabdispersao.h" open="1" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -58,14 +36,9 @@
 			<Cursor1 position="790" topLine="27" />
 		</Cursor>
 	</File>
-	<File name="funcoes.h" open="1" top="1" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="vetor.c" open="1" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="126" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="heap.c" open="1" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="2098" topLine="88" />
+			<Cursor1 position="3705" topLine="69" />
 		</Cursor>
 	</File>
 	<File name="vetor.h" open="1" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -73,9 +46,9 @@
 			<Cursor1 position="1950" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="vetor.c" open="1" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="heap.c" open="1" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="3705" topLine="69" />
+			<Cursor1 position="2098" topLine="88" />
 		</Cursor>
 	</File>
 </CodeBlocks_layout_file>
