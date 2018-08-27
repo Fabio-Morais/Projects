@@ -8,20 +8,13 @@ int main()
 {
     int i;
     GerarNumero();
-    Vetor *vetor=CriarVetor();
-    LerFicheiro(vetor);
+
 
 //    ImprimeData(vetor);
 
-    menu(vetor);
+    menu();
 
-    ImprimeData(vetor);
 
-    EscreverFicheiro(vetor);
-
-//    ApagaData(vetor);
-
-//    LerFicheiro(vetor);
 //
 //    ImprimeData(vetor);
 //

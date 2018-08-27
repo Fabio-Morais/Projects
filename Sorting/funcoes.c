@@ -7,21 +7,24 @@ Vetor* CriarVetor()
     vetor->size=0;
     return vetor;
 }
-int ApagaData(Vetor *vec){
+int ApagaData(Vetor *vec)
+{
     int i, tamanho=vec->size;
 
     vec->size=0;
     vec->data=NULL;
     free(vec->data);
 }
-void ImprimeData(Vetor *vec){
-int i;
-printf("\t IMPRIME DATA\n");
-for(i=0; i<vec->size; i++)
-    printf("%d\n", vec->data[i]);
+void ImprimeData(Vetor *vec)
+{
+    int i;
+    printf("\t IMPRIME DATA\n");
+    for(i=0; i<vec->size; i++)
+        printf("%d\n", vec->data[i]);
 
 }
-int InserirData(Vetor *vec, int number, int pos){
+int InserirData(Vetor *vec, int number, int pos)
+{
 
     vec->data= (int *)realloc(vec->data, sizeof(vec->data)*((vec->size)+1));
     if(pos==-1)
@@ -29,55 +32,118 @@ int InserirData(Vetor *vec, int number, int pos){
     else
         vec->data[pos]=number;
 
-     vec->size++;
+    vec->size++;
     return 1;
 }
+void ImprimePre(){
+    int d;
+    FILE *fp=fopen("PreSort.txt", "r");
+    printf("\nPOR FAVOR, ESPERE ATE O FICHEIRO SER CARREGADO\n\n\n");
+    while(fscanf(fp, "%d", &d)==1)
+        printf("%d\n", d);
+}
 
-void menu(Vetor *vec){
-int escolha;
+void ImprimePos(){
+    int d;
+    FILE *fp=fopen("PosSort.txt", "r");
+    printf("\nPOR FAVOR, ESPERE ATE O FICHEIRO SER CARREGADO\n\n\n");
+    while(fscanf(fp, "%d", &d)==1)
+        printf("%d\n", d);
+}
+void menu()
+{
+    int escolha, i;
+    double Tempo;
+    clock_t Ticks[2];
+
+
+
+    Vetor *vec=CriarVetor();
+    LerFicheiro(vec);
+
 ciclo:
-        ImprimeData(vec);
+    system("cls");
+    if(i==1)
+        printf("Tempo gasto: %g ms.\n\n", Tempo);
+    i=0;
+    printf("1-Insertion Sort\n");
+    printf("2-Selection Sort\n");
+    printf("3-BubbleSort\n");
+    printf("4-Quick Sort\n");
+    printf("5-Quick Sort 2 pivot\n");
+    printf("6-Mergesort\n");
+    printf("7-Imprimir Pre Sorting\n");
+    printf("8-Imprimir Pos Sorting\n");
+    printf("9-Sair\n");
 
-printf("1-Insertion Sort\n");
-printf("2-Selection Sort\n");
-printf("3-BubbleSort\n");
-printf("4-Quick Sort\n");
-printf("5-Quick Sort 2 pivot\n");
-printf("6-Mergesort\n");
-printf("7-Pesquisa Binárian\n");
+    scanf("%d", &escolha);
+    system("cls");
+    switch(escolha)
+    {
 
-scanf("%d", &escolha);
-switch(escolha){
-
-case 1:
-    InsertionSort(vec);
-    break;
-case 2:
-    SelectionSort(vec);
-    break;
-case 3:
-    bubbleSort(vec);
-    break;
-case 4:
-    QuickSort1(vec);
-    break;
-case 5:
-    QuickSort2Pivot(vec);
-    break;
-case 6:
-    Mergesort(vec);
-    break;
-case 7:
-    break;
-
-}goto ciclo;
-
+    case 1:
+        Ticks[0] = clock();
+        InsertionSort(vec);
+        Ticks[1] = clock();
+        Tempo= (Ticks[1] - Ticks[0]) * 1000.0 / CLOCKS_PER_SEC;
+        break;
+    case 2:
+         Ticks[0] = clock();
+        SelectionSort(vec);
+         Ticks[1] = clock();
+        Tempo= (Ticks[1] - Ticks[0]) * 1000.0 / CLOCKS_PER_SEC;
+        break;
+    case 3:
+         Ticks[0] = clock();
+        bubbleSort(vec);
+         Ticks[1] = clock();
+        Tempo= (Ticks[1] - Ticks[0]) * 1000.0 / CLOCKS_PER_SEC;
+        break;
+    case 4:
+         Ticks[0] = clock();
+        QuickSort1(vec);
+         Ticks[1] = clock();
+        Tempo= (Ticks[1] - Ticks[0]) * 1000.0 / CLOCKS_PER_SEC;
+        break;
+    case 5:
+         Ticks[0] = clock();
+        QuickSort2Pivot(vec);
+         Ticks[1] = clock();
+        Tempo= (Ticks[1] - Ticks[0]) * 1000.0 / CLOCKS_PER_SEC;
+        break;
+    case 6:
+         Ticks[0] = clock();
+        Mergesort(vec);
+         Ticks[1] = clock();
+        Tempo= (Ticks[1] - Ticks[0]) * 1000.0 / CLOCKS_PER_SEC;
+        break;
+    case 7:
+        ImprimePre();
+        system("PAUSE");
+        break;
+    case 8:
+        ImprimePos();
+        system("PAUSE");
+        break;
+    case 9:
+        goto sair;
+        break;
+    }
+    EscreverFicheiro(vec);
+    if(escolha>0 && escolha<7)
+        i=1;
+    ApagaData(vec);
+    LerFicheiro(vec);
+    goto ciclo;
+sair:
+    return;
 }
 
 
-int GerarNumero(){
+int GerarNumero()
+{
 
-int i, x;
+    int i, x;
     FILE *fp= fopen("PreSort.txt", "w");
 
     for(i=0; i<MAX; i++)
@@ -91,38 +157,42 @@ int i, x;
 
 
 
-int LerFicheiro(Vetor *vec){
-int numero;
-FILE *fp=fopen("PreSort.txt", "r");
+int LerFicheiro(Vetor *vec)
+{
+    int numero;
+    FILE *fp=fopen("PreSort.txt", "r");
 
-while(fscanf(fp, "%d", &numero)==1)
-    InserirData(vec, numero, -1);
+    while(fscanf(fp, "%d", &numero)==1)
+        InserirData(vec, numero, -1);
 
-fclose(fp);
+    fclose(fp);
 }
 
-int EscreverFicheiro(Vetor *vec){
-int i;
-FILE *fp=fopen("PosSort.txt", "w");
+int EscreverFicheiro(Vetor *vec)
+{
+    int i;
+    FILE *fp=fopen("PosSort.txt", "w");
 
-for(i=0; i<vec->size; i++)
-    fprintf(fp, "%d\n" ,vec->data[i]);
+    for(i=0; i<vec->size; i++)
+        fprintf(fp, "%d\n",vec->data[i]);
 
-fclose(fp);
+    fclose(fp);
 
 }
 
 
-void TrocaData(Vetor *vec, int Pos1, int Pos2){
-int aux;
-aux=vec->data[Pos1];
-vec->data[Pos1]= vec->data[Pos2];
-vec->data[Pos2]=aux;
+void TrocaData(Vetor *vec, int Pos1, int Pos2)
+{
+    int aux;
+    aux=vec->data[Pos1];
+    vec->data[Pos1]= vec->data[Pos2];
+    vec->data[Pos2]=aux;
 }
 
 /** METODOS DE ORDENAÇAO **/
 
-int InsertionSort(Vetor *vec){
+int InsertionSort(Vetor *vec)
+{
     int i, x, aux;
     for(i=1; i<vec->size; i++)
     {
@@ -143,7 +213,8 @@ int InsertionSort(Vetor *vec){
 
 
 
-int SelectionSort(Vetor *vec){
+int SelectionSort(Vetor *vec)
+{
 
     int i, j, min;
 
@@ -161,31 +232,36 @@ int SelectionSort(Vetor *vec){
 
 
 /** EXEMPLO 1**/
-int QuickSort1(Vetor *vec){
+int QuickSort1(Vetor *vec)
+{
     quickSortIter(vec, 0, vec->size-1);
 }
 /** EXEMPLO 2**/
-int QuickSort2(Vetor *vec){
+int QuickSort2(Vetor *vec)
+{
     quickSortIter2(vec, 0, vec->size-1);
 }
 /** EXEMPLO com 2 pivot**/
-int QuickSort2Pivot(Vetor *vec){
-    DualPivotQuickSort(vec, 0 , vec->size-1);
+int QuickSort2Pivot(Vetor *vec)
+{
+    DualPivotQuickSort(vec, 0, vec->size-1);
 }
 int bubbleSort(Vetor *vec)
 {
-   int i, j, n=vec->size;
-   for (i = 0; i < n-1; i++)
-       for (j = 0; j < n-i-1; j++) // faz uma linha no fim
-           if (vec->data[j] > vec->data[j+1])
+    int i, j, n=vec->size;
+    for (i = 0; i < n-1; i++)
+        for (j = 0; j < n-i-1; j++) // faz uma linha no fim
+            if (vec->data[j] > vec->data[j+1])
                 TrocaData(vec, j, j+1);
 }
 
-int Mergesort(Vetor *vec){
-mergeSort(vec, 0, vec->size-1);
+int Mergesort(Vetor *vec)
+{
+    mergeSort(vec, 0, vec->size-1);
 }
 
-void mergeSort(Vetor *vetor, int posicaoInicio, int posicaoFim) {
+void mergeSort(Vetor *vetor, int posicaoInicio, int posicaoFim)
+{
     int i, j, k, metadeTamanho, *vetorTemp;
     if(posicaoInicio == posicaoFim) return;
     metadeTamanho = (posicaoInicio + posicaoFim ) / 2;
@@ -198,25 +274,32 @@ void mergeSort(Vetor *vetor, int posicaoInicio, int posicaoFim) {
     k = 0;
     vetorTemp = (int *) malloc(sizeof(int) * (posicaoFim - posicaoInicio + 1));
 
-    while(i < metadeTamanho + 1 || j  < posicaoFim + 1) {
-        if (i == metadeTamanho + 1 ) {
+    while(i < metadeTamanho + 1 || j  < posicaoFim + 1)
+    {
+        if (i == metadeTamanho + 1 )
+        {
             vetorTemp[k] = vetor->data[j];
             j++;
             k++;
         }
-        else {
-            if (j == posicaoFim + 1) {
+        else
+        {
+            if (j == posicaoFim + 1)
+            {
                 vetorTemp[k] = vetor->data[i];
                 i++;
                 k++;
             }
-            else {
-                if (vetor->data[i] < vetor->data[j]) {
+            else
+            {
+                if (vetor->data[i] < vetor->data[j])
+                {
                     vetorTemp[k] = vetor->data[i];
                     i++;
                     k++;
                 }
-                else {
+                else
+                {
                     vetorTemp[k] = vetor->data[j];
                     j++;
                     k++;
@@ -225,7 +308,8 @@ void mergeSort(Vetor *vetor, int posicaoInicio, int posicaoFim) {
         }
 
     }
-    for(i = posicaoInicio; i <= posicaoFim; i++) {
+    for(i = posicaoInicio; i <= posicaoFim; i++)
+    {
         vetor->data[i] = vetorTemp[i - posicaoInicio];
     }
     free(vetorTemp);
