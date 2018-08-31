@@ -2,8 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-#define MAX 900000
-#define MaxRando 1000
+#define MaxRando 10000
 typedef struct Vetor{
 
 int *data;
@@ -17,11 +16,12 @@ Vetor* CriarVetor();
 
 void ImprimeData(Vetor *vec);
 
+void inicial();
 
 void menu();
 
 /** Manda para o ficheiro PreSort numeros aleatorios **/
-int GerarNumero();
+int GerarNumero(int MAX);
 
 int LerFicheiro(Vetor *vec);
 

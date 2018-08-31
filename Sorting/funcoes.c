@@ -1,4 +1,5 @@
 #include "funcoes.h"
+#include "heap.h"
 
 Vetor* CriarVetor()
 {
@@ -9,8 +10,6 @@ Vetor* CriarVetor()
 }
 int ApagaData(Vetor *vec)
 {
-    int i, tamanho=vec->size;
-
     vec->size=0;
     vec->data=NULL;
     free(vec->data);
@@ -50,21 +49,56 @@ void ImprimePos(){
     while(fscanf(fp, "%d", &d)==1)
         printf("%d\n", d);
 }
+void inicial(){
+
+printf("-Este programa ira imprimir os tempos de cada metodo de ordenacao, bastando \nselecionando de 1 a 7 qual o metodo que desejar\n\n");
+printf("-O programa ira demorar tempo a ler o ficheiro, ordenar elementos e escrever elementos\n\n");
+printf("-Os tempos apresentados em cada metodo sao os reais, mesmo parecendo que demoraram mais\n\n");
+printf("-OE possivel alterar o numero de elementos pressionando a tecla 10, tendo nocao que\nse for um numero mais elevado ira demorar mais um pouco\n\n");
+system("PAUSE");
+system("cls");
+}
 void menu()
 {
-    int escolha, i;
+    int escolha, i, j, HeapTime=0, count, x=0, Max;
     double Tempo;
     clock_t Ticks[2];
+    char name[25], nameaux[25], NameHeap[10][25], TimeHeap[10][25];
+    heap *Top10N;
+    heap *Top10T;
 
+    change:
+    Top10N= heap_nova(50);
+    Top10T= heap_nova(50);
+    system("cls");
+    printf("Selecione a quantidade de elementos pretendida: \n");
+    printf("1- 5000\n");
+    printf("2- 500000\n");
+    printf("3- 900000\n");
+    printf("4- 1000000\n");
+    printf("5- 3000000\n");
+    scanf("%d", &Max);
+    printf("POR FAVOR AGUARDE....");
+    if(Max==1)
+    Max=5000;
+    else if(Max==2)
+        Max=500000;
+        else if(Max==3)
+            Max=900000;
+            else if(Max==4)
+                Max= 1000000;
+                else if(Max==5)
+                    Max=3000000;
 
-
+    GerarNumero(Max);
     Vetor *vec=CriarVetor();
     LerFicheiro(vec);
 
 ciclo:
     system("cls");
+    printf("\t\tQUANTIDADE DE ELEMENTOS: %d\n\n\n", Max);
     if(i==1)
-        printf("Tempo gasto: %g ms.\n\n", Tempo);
+        printf("Tempo gasto: %g ms -- %s\n\n", Tempo, name);
     i=0;
     printf("1-Insertion Sort\n");
     printf("2-Selection Sort\n");
@@ -75,9 +109,26 @@ ciclo:
     printf("7-Imprimir Pre Sorting\n");
     printf("8-Imprimir Pos Sorting\n");
     printf("9-Sair\n");
+    printf("10-Mudar numero de elementos\n\n");
+    count=0;
 
+    if(x>0)
+        printf("\n\tTOP 10 DOS ULTIMOS TEMPOS:\n");
+    for(j=0; j<10 && (Top10N->tamanho>0); j++)
+        {
+        strcpy(NameHeap[j],heap_remove(Top10N));
+        strcpy(TimeHeap[j],heap_remove(Top10T));
+        printf("\t  -> %s - %s ms\n", NameHeap[j], TimeHeap[j]);
+        count++;
+        }
+    for(j=0; j<count; j++)
+       {
+        heap_insere(Top10N, NameHeap[j], atoi(TimeHeap[j]));
+        heap_insere(Top10T, TimeHeap[j], atoi(TimeHeap[j]));
+       }
     scanf("%d", &escolha);
     system("cls");
+    printf("POR FAVOR AGUARDE....");
     switch(escolha)
     {
 
@@ -86,36 +137,42 @@ ciclo:
         InsertionSort(vec);
         Ticks[1] = clock();
         Tempo= (Ticks[1] - Ticks[0]) * 1000.0 / CLOCKS_PER_SEC;
+        strcpy(name, "Insertion Sort");
         break;
     case 2:
          Ticks[0] = clock();
         SelectionSort(vec);
          Ticks[1] = clock();
         Tempo= (Ticks[1] - Ticks[0]) * 1000.0 / CLOCKS_PER_SEC;
+        strcpy(name, "Selection Sort");
         break;
     case 3:
          Ticks[0] = clock();
         bubbleSort(vec);
          Ticks[1] = clock();
         Tempo= (Ticks[1] - Ticks[0]) * 1000.0 / CLOCKS_PER_SEC;
+        strcpy(name, "BubbleSort");
         break;
     case 4:
          Ticks[0] = clock();
         QuickSort1(vec);
          Ticks[1] = clock();
         Tempo= (Ticks[1] - Ticks[0]) * 1000.0 / CLOCKS_PER_SEC;
+        strcpy(name, "Quick Sort");
         break;
     case 5:
          Ticks[0] = clock();
         QuickSort2Pivot(vec);
          Ticks[1] = clock();
         Tempo= (Ticks[1] - Ticks[0]) * 1000.0 / CLOCKS_PER_SEC;
+        strcpy(name, "Quick Sort 2 pivot");
         break;
     case 6:
          Ticks[0] = clock();
         Mergesort(vec);
          Ticks[1] = clock();
         Tempo= (Ticks[1] - Ticks[0]) * 1000.0 / CLOCKS_PER_SEC;
+        strcpy(name, "Merge Sort");
         break;
     case 7:
         ImprimePre();
@@ -128,19 +185,33 @@ ciclo:
     case 9:
         goto sair;
         break;
-    }
-    EscreverFicheiro(vec);
+    case 10:
+        heap_apaga(Top10N);
+        heap_apaga(Top10T);
+        goto change;
+        break;
+    }x++;
     if(escolha>0 && escolha<7)
-        i=1;
+     {
+         i=1;
+        heap_insere(Top10N, name, (int)Tempo);
+        sprintf(nameaux, "%d", (int)Tempo);
+        heap_insere(Top10T, nameaux, (int)Tempo);
+     }
+
+    EscreverFicheiro(vec);
+
     ApagaData(vec);
     LerFicheiro(vec);
     goto ciclo;
 sair:
+    ApagaData(vec);
+    free(vec);
     return;
 }
 
 
-int GerarNumero()
+int GerarNumero(int MAX)
 {
 
     int i, x;
