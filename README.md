@@ -21,7 +21,7 @@ C and python
 
 ---
 
-### "Jogo do Galo" in C
+### tik tak toe in C
 
 ![galo](https://user-images.githubusercontent.com/35969631/44608056-6399a680-a7ea-11e8-801b-bc413b86560c.PNG)
 ---
